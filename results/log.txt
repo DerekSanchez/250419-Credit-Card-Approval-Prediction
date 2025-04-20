@@ -1,0 +1,42 @@
+[2025-04-19 19:28:36] Start training of model: LogisticRegression
+[2025-04-19 19:29:21] Best Hyperparameters: {'C': 5.20485, 'penalty': 'l1', 'solver': 'saga', 'max_iter': 500}
+[2025-04-19 19:29:21] CV Train Score: {'mean': 0.999695843120814, 'std': 0.0002483431227822327}
+[2025-04-19 19:29:21] CV Validation Score: {'mean': 0.9977189324437031, 'std': 0.0030554392944941913}
+[2025-04-19 19:29:21] Training complete for model: LogisticRegression
+[2025-04-19 19:35:09] Start training of model: LogisticRegression
+[2025-04-19 19:35:20] Best Hyperparameters: {'C': 5.20485, 'penalty': 'l1', 'solver': 'saga', 'max_iter': 500}
+[2025-04-19 19:35:20] CV Train Score: {'mean': 0.997396651485159, 'std': 0.0018440865890506114}
+[2025-04-19 19:35:20] CV Validation Score: {'mean': 0.9855153103776957, 'std': 0.02254000217280881}
+[2025-04-19 19:35:20] Training complete for model: LogisticRegression
+[2025-04-19 19:36:20] Start training of model: LogisticRegression
+[2025-04-19 19:36:29] Best Hyperparameters: {'C': 5.20485, 'penalty': 'l1', 'solver': 'saga', 'max_iter': 500}
+[2025-04-19 19:36:29] CV Train Score: {'mean': 0.9986223122117085, 'std': 0.0017903573205213224}
+[2025-04-19 19:36:29] CV Validation Score: {'mean': 0.9893073593073594, 'std': 0.015411255411255407}
+[2025-04-19 19:36:29] Training complete for model: LogisticRegression
+[2025-04-19 19:37:14] classification report generated
+[2025-04-19 19:37:23] confusion matrix displayed
+[2025-04-19 19:38:47] roc curve displayed
+[2025-04-19 19:39:14] Start training of model: SVM
+[2025-04-19 19:39:18] Best Hyperparameters: {'C': 1.0, 'kernel': 'rbf', 'gamma': 'scale', 'probability': True}
+[2025-04-19 19:39:18] CV Train Score: {'mean': 0.7189521156689651, 'std': 0.02246176678274448}
+[2025-04-19 19:39:18] CV Validation Score: {'mean': 0.6458274752770164, 'std': 0.04963876166956336}
+[2025-04-19 19:39:18] Training complete for model: SVM
+[2025-04-19 19:39:49] classification report generated
+[2025-04-19 19:40:04] confusion matrix displayed
+[2025-04-19 19:40:08] roc curve displayed
+[2025-04-19 19:40:21] Start training of model: RandomForest
+[2025-04-19 19:40:37] Best Hyperparameters: {'n_estimators': 427, 'max_depth': 17, 'min_samples_split': 0.014303, 'min_samples_leaf': 0.015765}
+[2025-04-19 19:40:37] CV Train Score: {'mean': 1.0, 'std': 0.0}
+[2025-04-19 19:40:37] CV Validation Score: {'mean': 1.0, 'std': 0.0}
+[2025-04-19 19:40:37] Training complete for model: RandomForest
+[2025-04-19 19:41:06] classification report generated
+[2025-04-19 19:41:11] confusion matrix displayed
+[2025-04-19 19:41:16] roc curve displayed
+[2025-04-19 19:41:27] Start training of model: GradientBoosting
+[2025-04-19 19:41:32] Best Hyperparameters: {'learning_rate': 0.01, 'n_estimators': 100, 'max_depth': 4}
+[2025-04-19 19:41:32] CV Train Score: {'mean': 1.0, 'std': 0.0}
+[2025-04-19 19:41:32] CV Validation Score: {'mean': 0.9995412844036696, 'std': 0.0013761467889908175}
+[2025-04-19 19:41:32] Training complete for model: GradientBoosting
+[2025-04-19 19:42:00] classification report generated
+[2025-04-19 19:42:04] confusion matrix displayed
+[2025-04-19 19:42:08] roc curve displayed

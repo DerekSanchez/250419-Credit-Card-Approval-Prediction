@@ -1,3 +1,0 @@
-cambiar archivo config con lo aprendido en el EDA
-cambiar feature engineering de preprocess.py con los ajustes
-ver como integrar evaluación para desbalanceo de clases

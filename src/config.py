@@ -74,7 +74,10 @@ num_features_to_drop = [
 
 cat_features_to_drop = [
     'Car_Owner',
-    'Propert_Owner'
+    'Propert_Owner',
+    'Ind_ID',
+    'Housing_type',
+    'Type_Occupation'
 ]
 
 # -------------------------------
@@ -110,8 +113,7 @@ ordinal_mappings = {
 nominal_columns = [
     'Type_Income',
     'Marital_status',
-    'Housing_type',
-    'Type_Occupation'
+    'Housing_type'
     ]
 
 

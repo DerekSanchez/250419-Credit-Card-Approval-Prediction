@@ -21,7 +21,7 @@ import numpy as np
 import src.config as cf
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.base import BaseEstimator, TransformerMixin
-from imblearn.over_sampling import SMOTE
+from imblearn.over_sampling import SMOTE, RandomOverSampler
 
 
 # -------------------------------
@@ -423,7 +423,7 @@ class DataAugmentation(BaseEstimator, TransformerMixin):
     Data Augmentation for tabular data
     """
     
-    def __init__(self, method = 'smote', target_col = None, active = True, k_neighbors = 1):
+    def __init__(self, method = 'smote', target_col = None, active = True, k_neighbors = 5, random_state = cf.random_state):
         """
         Parameters:
             - method (str): 'oversample' or 'smote'
@@ -435,41 +435,47 @@ class DataAugmentation(BaseEstimator, TransformerMixin):
         self.target_col = target_col
         self.active = active
         self.k_neighbors = k_neighbors
+        self.random_state = random_state
         self.sampler = None
         
     def fit(self, X, y = None):
-        if self.active:
-            if self.method == 'smote':
-                self.sampler = SMOTE(k_neighbors = self.k_neighbors)
-            elif self.method == 'oversample':
-                self.sampler == 'oversample'
-        return self
-
-    def transform(self, X):
         if not self.active:
-            # if not active, return data as original
-            return X
+            return self
         
-        # target feature split
-        X_copy = X.copy()
-        y = X_copy[self.target_col]
-        X_features = X_copy.drop(columns = [self.target_col])
+        if y is None:
+            if self.target_col is None:
+                raise ValueError('Must input and/or indicate target_col')
+            y = X[self.target_col]
+            X = X.drop(columns = [self.target_col])
         
         if self.method == 'smote':
-            X_resampled, y_resampled = self.sampler.fit_resample(X_features, y)
-            X_resampled[self.target_col] = y_resampled
-            return X_resampled
-
+            self.sampler = SMOTE(
+                k_neighbors = self.k_neighbors,
+                random_state = self.random_state
+            )
         elif self.method == 'oversample':
-            majority_class = y.value_counts().idxmax()
-            minority_class = y.value_counts().idxmin()
-            
-            X_minority = X_copy[X_copy[self.target_col] == minority_class]
-            oversampled_minority = X_minority.sample(len(X_copy[X_copy[self.target_col] == majority_class]), replace = True)
-            
-            X_resampled = pd.concat([X_copy, oversampled_minority], axis = 0).reset_index(drop = True)
-            
-            return X_resampled       
+            self.sampler = RandomOverSampler(random_state = self.random_state)
+        else:
+            raise ValueError('Method must be "smote" or "oversample"')
+
+        self.sampler.fit(X, y)
+        return self
+
+    def transform(self, X, y = None):
+        if not self.active:
+            return (X, y) if y is not None else X
+        
+        if y is None:
+            y = X[self.target_col]
+            X = X.drop(columns = [self.target_col])
+        
+        X_res, y_res = self.sampler.fit_resample(X, y)
+        
+        # return both variables if downstream needs them
+        if self.target_col is not None:
+            X_res[self.target_col] = y_res
+            return X_res
+        return X_res, y_res # if target and features are inputed separately       
 
 
 
