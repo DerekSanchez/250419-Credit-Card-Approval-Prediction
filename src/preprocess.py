@@ -183,37 +183,18 @@ class FeatureEngineering(BaseEstimator, TransformerMixin):
         """ 
         X_copy = X.copy()
         
-        # create new column: TotalCost
-        if 'tenure' in X_copy.columns and 'MonthlyCharges' in X_copy.columns:
-            X_copy['TotalCost'] = X_copy['tenure'] * X_copy['MonthlyCharges']
+        # create new column: years_of_age
+        if 'Birthday_count' in X_copy.columns:
+            X_copy['years_of_age'] = X_copy['Birthday_count'] / 365
         
-        # create new column: RevenueAdjustment
-        if 'TotalCharges' in X_copy.columns and 'TotalCost' in X_copy.columns:
-            X_copy['RevenueAdjustment'] = X_copy['TotalCharges'] - X_copy['TotalCost']
+        # create new column: average_lifetime_income
+        if 'Employed_days' in X_copy.columns and 'Annual_income' in X_copy.columns:
+            X_copy['average_lifetime_income'] = X_copy['Annual_income'] * X_copy['Employed_days'] / 365
         
-        # create new column: log monthly charges
-        if 'MonthlyCharges' in X_copy.columns:
-            X_copy['LogMonthlyCharges'] = X_copy['MonthlyCharges'].apply(
+        # create new column: log annual income
+        if 'Annual_income' in X_copy.columns:
+            X_copy['LogAnnual_income'] = X_copy['Annual_income'].apply(
             lambda x: np.log(x) if pd.notnull(x) and x > 0 else 0)
-        
-        # column values simplification: InternetService
-        if 'InternetService' in X_copy.columns:
-            X_copy['InternetService'] = X_copy['InternetService'].replace(
-            {'Fiber optic': 'Yes',
-             'DSL' : 'Yes'}
-            )
-        
-        # column values simplification: MultipleLines
-        if 'MultipleLines' in X_copy.columns:
-            X_copy['MultipleLines'] = X_copy['MultipleLines'].replace(
-            {'No phone service': 'No'}
-            )
-        
-        # column values simplification: OnlineSecurity
-        if 'OnlineSecurity' in X_copy.columns:
-            X_copy['OnlineSecurity'] = X_copy['OnlineSecurity'].replace(
-            {'No internet service': 'No'}
-            )
         
         return X_copy
 
