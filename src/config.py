@@ -51,8 +51,8 @@ print("results path", paths['results'])
 # -------------------------------
 
 target_mapping = {
-    'Yes' : 1,
-    'No': 0
+    1 : 1,
+    0 : 0
 }
 
 # ===============================
@@ -66,16 +66,15 @@ target_mapping = {
 # -------------------------------
 
 num_features_to_drop = [
-    
+    'Phone',
+    'Work_Phone',
+    'EMAIL_ID',
+    'CHILDREN'
 ]
 
 cat_features_to_drop = [
-    'customerID',
-    'Dependents',
-    'Partner',
-    'gender',
-    'PhoneService',
-    'MultipleLines'
+    'Car_Owner',
+    'Propert_Owner'
 ]
 
 # -------------------------------
@@ -92,33 +91,27 @@ imputation_strategies = {
 # -------------------------------
 
 binary_mappings = {
-    'gender': {'Male' : 1, 'Female' : 0},
-    'partner': {'Yes' : 1, 'No' : 0},
-    'dependents' : {'Yes' : 1, 'No' : 0},
-    'PhoneService' : {'Yes' : 1, 'No' : 0},
+    'GENDER': {'M' : 1, 'F' : 0},
+    'partner': {'Yes' : 1, 'No' : 0}
     # not originally binary, but modified to be in Feature Engineering
-    'MultipleLines' : {'Yes' : 1, 'No' : 0},
-    'InternetService' : {'Yes' : 1, 'No' : 0},
-    'OnlineSecurity' : {'Yes' : 1, 'No' : 0},
-    'PaperlessBilling': {'Yes': 1, 'No': 0},
-    'Churn': {'Yes' : 1, 'No' : 0}
+    
 }
 
 ordinal_mappings = {
-    'Contract':{
-        'Month-to-month': 0,
-        'Two year': 1,
-        'One year': 2
+    'EDUCATION':{
+        'Lower secondary': 0,
+        'Secondary / secondary special': 1,
+        'Incomplete higher': 2,
+        'Higher education' : 3,
+        'Academic degree' : 4
     }
 }
 
 nominal_columns = [
-    'PaymentMethod', 
-    'OnlineBackup',
-    'DeviceProtection',
-    'TechSupport',
-    'StreamingTV',
-    'StreamingMovies',
+    'Type_Income',
+    'Marital_status',
+    'Housing_type',
+    'Type_Occupation'
     ]
 
 
@@ -127,7 +120,7 @@ nominal_columns = [
 # Data Split
 # -------------------------------
 
-test_size = 0.3
+test_size = 0.2
 random_state = 123
 
 
