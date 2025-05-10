@@ -2,7 +2,7 @@
 
 ## Description
 
-**For an executive results deck, check 'results' folder**
+**For an executive results deck, check 'results' folder or click [here](https://drive.google.com/file/d/1ZX0cnJZiThBepglX8eQ_JZEEGk-J7xm2/view?usp=sharing)**
 
 This project builds and implements a binary classification model in order to predict customer approval for a bank using multiple numerical and categorical variables about the client
 
