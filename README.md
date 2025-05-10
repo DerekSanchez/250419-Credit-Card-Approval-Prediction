@@ -23,4 +23,4 @@ The original dataset can be found [here](https://www.kaggle.com/datasets/rohitud
     - utils.py: file used to define global and reusable functions across the ecosystem
     - preprocess.py: file used to define the preprocessing pipeline through classes
     - train.py: file that contanins generic and reusable training functions for binary classification  models
-    - evaluate.py: file that contanins generic and reusable testing functions for binary classification  models# Customer Churn Prediction Telco
+    - evaluate.py: file that contanins generic and reusable testing functions for binary classification  models
